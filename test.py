@@ -5,7 +5,8 @@ import time
 from pedestrian_detection_ssdlite import api
 from matplotlib import pyplot as plt
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("test_1.mp4")
+#cap = cv2.VideoCapture(0) #for webcam laptop
 
 start = 0
 end = 0
@@ -14,7 +15,7 @@ count = 0
 total_count = 10
 total_time = 0
 
-while(1):
+while(cap.isOpened()):
     start = time.time()
     berhasil, img = cap.read()
     img = imutils.resize(img, width=min(400, img.shape[1]))
