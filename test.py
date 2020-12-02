@@ -6,12 +6,12 @@ from pedestrian_detection_ssdlite import api
 from matplotlib import pyplot as plt
 import serial
 
-urlPhone = "http://10.128.87.239:8080/video"
+urlPhone = "http://10.162.199.42:8080/video"
 
 # cap = cv2.VideoCapture("test_2.mp4")
-# cap = cv2.VideoCapture(0) #for webcam laptop
-cap = cv2.VideoCapture(urlPhone)
-
+# cap = cv2.VideoCapture("test_1.mp4")
+cap = cv2.VideoCapture(0) #for webcam laptop
+# cap = cv2.VideoCapture(urlPhone)
 
 
 start = 0
@@ -29,7 +29,7 @@ count_people = 0
 while(cap.isOpened()):
     start = time.time()
     berhasil, img = cap.read()
-    img = imutils.resize(img, width=min(400, img.shape[1]))
+    # img = imutils.resize(img, width=min(400, img.shape[1]))
     if berhasil:
         bbox_list = api.get_person_bbox(img, thr=0.6)
         # print(bbox_list)
