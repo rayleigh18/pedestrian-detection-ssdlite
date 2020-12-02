@@ -1,9 +1,10 @@
+#define PIN_LED A5
+#define PIN_BUZZER A1
 void setup() {
   Serial.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(A5, OUTPUT);
-  pinMode(A1, OUTPUT);
-
+  pinMode(PIN_LED, OUTPUT);
+  pinMode(PIN_BUZZER, OUTPUT);
 }
 int val = 0;
 unsigned long time = 0;
@@ -15,13 +16,13 @@ void loop() {
     val = char(Serial.read()) - '0';
     Serial.write("\n");
     digitalWrite(LED_BUILTIN, val);
-    digitalWrite(A5, val);
-//    digitalWrite(A1, val);
+    digitalWrite(PIN_LED, val);
+//    digitalWrite(PIN_BUZZER, val);
     if (val){
-      tone(A1, 1000);
+      tone(PIN_BUZZER, 1000);
     }
     else{
-      noTone(A1);
+      noTone(PIN_BUZZER);
     }
       
   }
